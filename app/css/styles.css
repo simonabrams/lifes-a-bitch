@@ -1,0 +1,24 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.song-container {
+  position: relative;
+  display: block;
+  width: 80%;
+  max-width: 30rem;
+  height: 100%;
+  margin: auto;
+  color: black;
+  text-align: center; }
+
+.thumbnail {
+  width: 100%; }
+  .thumbnail .thumbnail-img {
+    width: 100%;
+    height: 100%; }
+
+.artist {
+  width: 100%; }
