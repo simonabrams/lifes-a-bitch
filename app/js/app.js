@@ -23,10 +23,14 @@
 
         // build the display 
         // TODO: Use handlebars for templating this
-        var thumbnailImg = document.getElementsByClassName('thumbnail-img')[0];
-        thumbnailImg.src = s.thumbnail;
-        var thumbnailLink = document.getElementsByClassName('thumbnail-link')[0];
-        thumbnailLink.href = s.path;
+
+        document.body.style.backgroundImage = "url(" + s.thumbnail + ")";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+
+
+        // var thumbnailLink = document.getElementsByClassName('thumbnail-link')[0];
+        // thumbnailLink.href = s.path;
 
         var titleText = document.getElementsByClassName('title-text')[0];
         titleText.innerHTML = s.title;

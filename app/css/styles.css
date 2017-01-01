@@ -1,24 +1,34 @@
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: "Anton", sans-serif; }
 
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0; }
 
-.song-container {
-  position: relative;
-  display: block;
-  width: 80%;
-  max-width: 30rem;
-  height: 100%;
-  margin: auto;
-  color: black;
-  text-align: center; }
+body {
+  background-color: #003763;
+  background-blend-mode: soft-light; }
 
-.thumbnail {
-  width: 100%; }
-  .thumbnail .thumbnail-img {
-    width: 100%;
-    height: 100%; }
-
-.artist {
-  width: 100%; }
+.wrapper {
+  width: 100%;
+  height: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
+  .wrapper .song-container {
+    color: black;
+    text-align: center; }
+    .wrapper .song-container a {
+      color: white;
+      text-decoration: none; }
+    .wrapper .song-container .title .title-text {
+      font-size: 6em; }
+    .wrapper .song-container .artist {
+      width: 100%; }
+      .wrapper .song-container .artist .artist-text {
+        font-size: 2rem; }
