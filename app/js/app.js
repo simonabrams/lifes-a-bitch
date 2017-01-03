@@ -1,12 +1,5 @@
 (function(){
-    //  set client ID token
-    var clientID = "EoG8HgZ6WIseNFKbw1qUxXo5w6lhrV1-f76IvGt4bfTfE2hlxSU2OHhBDA9kYADd";
-    // set client access token
-    var clientAccessToken = "Z-NIDSz5s1ET8GhOVI8I7qhWpkP5cJTPyxB1lHXPzYbtpJgXHTUvHRlJ5t7Kjg55";
-    // search for songs with the lyric "life's a bitch"
-    var search_term = "lifes+a+bitch";
-    var url = "https://api.genius.com/search?q=" + search_term + "&per_page=50" + "&access_token=" + clientAccessToken;
-
+    
     var data;
 
     function getSongInfo(id) {
@@ -50,21 +43,6 @@
 
     }
 
-    // generate a random number between two numbers
-    function randRange(min, max)
-    {
-         return Math.round(min + (max - min) * Math.random());
-    }
-
-    // set sentence case
-    function sentenceCase (str) {  
-      if ((str===null) || (str===''))  
-           return false;  
-      else  
-       str = str.toString();  
-      
-     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});  
-    }  
 
     // make a new XMLHttpRequest object
     var xhr;
@@ -99,14 +77,43 @@
 
     // gets songs from the API
     function getSongs(){
+        //  set client ID token
+        var clientID = "EoG8HgZ6WIseNFKbw1qUxXo5w6lhrV1-f76IvGt4bfTfE2hlxSU2OHhBDA9kYADd";
+        // set client access token
+        var clientAccessToken = "Z-NIDSz5s1ET8GhOVI8I7qhWpkP5cJTPyxB1lHXPzYbtpJgXHTUvHRlJ5t7Kjg55";
+        // search for songs with the lyric "life's a bitch"
+        var request_uri = "https://api.genius.com/search/lyrics?q=lifes%20a%20bitch&per_page=50";
+        
         // open the connection to the server
-        xhr.open("GET", url, true);
-        // xhr.setRequestHeader("Authorization", "Bearer " + clientAccessToken);
+        xhr.open("GET", request_uri, true);
+        xhr.setRequestHeader("Authorization", "Bearer " + clientAccessToken);
         // handle the data response
         xhr.onreadystatechange = processResponse;
         xhr.send();
     }
-
     getSongs();
+
+
+
+    /**
+     *   utilities
+     */
+    
+    // generate a random number between two numbers
+    function randRange(min, max)
+    {
+         return Math.round(min + (max - min) * Math.random());
+    }
+
+    // set sentence case
+    function sentenceCase (str) {  
+      if ((str===null) || (str===''))  
+           return false;  
+      else  
+       str = str.toString();  
+      
+     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});  
+    } 
+
 
 })();
