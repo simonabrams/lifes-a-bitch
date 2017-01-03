@@ -1,6 +1,9 @@
+/* vars */
+$colorBlue: rgba(0, 55, 99, 1);
+$fontStack: "Lobster Two", cursive;
 html {
   box-sizing: border-box;
-  font-family: "Lobster Two", cursive;
+  font-family: $fontStack;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -9,14 +12,16 @@ html {
 }
 
 body {
-    background-color: rgba(0,55,99,1);
+    background-color: $colorBlue;
     background-blend-mode: soft-light;
 }
 
+.songs-button, .wrapper {
+    position: absolute;
+}
 .wrapper {
     width: 100%;
     height: 10rem;
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -36,6 +41,7 @@ body {
                 font-weight: 700;
                 font-style: italic;
                 font-size: 6em;
+                text-shadow: 0.3rem 0.3rem 2.6rem rgba(0,0,0, 0.7); 
             }
         }
         
@@ -45,6 +51,32 @@ body {
                 font-size: 2rem;
             }
         }
+    }
+
+    .songs-button {
+        font-family: $fontStack;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+
+        display: inline-block;
+        width: 10rem;
+        height: 10rem;
+        margin-top: 10rem;
+        padding: 1.5em;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        background-color: white;
+        color: $colorBlue;
+        border: none;
+        border-radius: 50%;
+
+    }
+    .songs-button:hover {
+        background-color: $colorBlue;
+        color: white;
     }
 }
 
