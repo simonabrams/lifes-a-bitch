@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-family: "Anton", sans-serif;
+  font-family: "Lobster Two", cursive;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -33,6 +33,8 @@ body {
 
         .title {
             .title-text {
+                font-weight: 700;
+                font-style: italic;
                 font-size: 6em;
             }
         }
