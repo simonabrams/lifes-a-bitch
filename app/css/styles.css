@@ -12,7 +12,7 @@ body {
   background-color: #003763;
   background-blend-mode: soft-light; }
 
-.songs-button, .wrapper {
+.wrapper {
   position: absolute; }
 
 .wrapper {
@@ -22,7 +22,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto; }
+  margin: 20rem auto; }
   .wrapper .song-container {
     color: black;
     text-align: center; }
@@ -38,23 +38,50 @@ body {
       width: 100%; }
       .wrapper .song-container .artist .artist-text {
         font-size: 2rem; }
-  .wrapper .songs-button {
-    font-family: "Lobster Two", cursive;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    width: 10rem;
+  .wrapper .media-objects {
+    margin: 5rem 0;
+    width: 100%;
+    height: 6rem;
+    padding: 1rem; }
+    .wrapper .media-objects .media-objects-list {
+      color: white;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0; }
+      .wrapper .media-objects .media-objects-list a {
+        color: white; }
+      .wrapper .media-objects .media-objects-list i {
+        width: 5rem;
+        height: 5rem;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0.9rem;
+        border-radius: 25%; }
+      .wrapper .media-objects .media-objects-list .media-object-item {
+        display: inline-block;
+        list-style-type: none;
+        padding-right: 5px; }
+  .wrapper .refresh {
+    width: 100%;
     height: 10rem;
-    margin-top: 10rem;
-    padding: 1.5em;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    color: #003763;
-    border: none;
-    border-radius: 50%; }
-  .wrapper .songs-button:hover {
-    background-color: #003763;
-    color: white; }
+    padding: 1rem; }
+    .wrapper .refresh .songs-button {
+      position: absolute;
+      width: 8rem;
+      height: 8rem;
+      margin: auto;
+      padding: 1.5em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Lobster Two", cursive;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      background-color: white;
+      color: #003763;
+      border: none;
+      border-radius: 25%; }
+    .wrapper .refresh .songs-button:hover {
+      background-color: #003763;
+      color: white; }

@@ -1,6 +1,12 @@
 /* vars */
 $colorBlue: rgba(0, 55, 99, 1);
 $fontStack: "Lobster Two", cursive;
+
+@mixin centered() {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 html {
   box-sizing: border-box;
   font-family: $fontStack;
@@ -16,7 +22,7 @@ body {
     background-blend-mode: soft-light;
 }
 
-.songs-button, .wrapper {
+.wrapper {
     position: absolute;
 }
 .wrapper {
@@ -26,7 +32,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
+    margin: 20rem auto;
 
     .song-container {
         color: black;
@@ -53,30 +59,85 @@ body {
         }
     }
 
-    .songs-button {
-        font-family: $fontStack;
-        font-size: 1.2rem;
-        font-weight: 700;
-        text-decoration: none;
-        text-align: center;
+    .media-objects {
+        margin: 5rem 0;
+        width: 100%;
+        height: 6rem;
+        padding: 1rem;
+        // width: 30%;
+        // @include centered;
 
-        display: inline-block;
-        width: 10rem;
-        height: 10rem;
-        margin-top: 10rem;
-        padding: 1.5em;
-        left: 50%;
-        transform: translateX(-50%);
+        .media-objects-list {
+            color: white;
+
+            position: absolute;
+            @include centered;
+            
+            padding: 0;
+            a {
+                color: white;
+            }
+            i {
+                width: 5rem;
+                height: 5rem;
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: 0.9rem;
+                border-radius: 25%;
+            }
+            .fa {
+                // font-size: 2.3rem;
+            }
+
+            .media-object-item {
+                display: inline-block;
+                list-style-type: none;
+                padding-right: 5px;
+            }
+
+        }
+    }
+    
+    .refresh {
         
-        background-color: white;
-        color: $colorBlue;
-        border: none;
-        border-radius: 50%;
+        width: 100%;
+        height: 10rem;
+        padding: 1rem;
 
+        .songs-button {
+            position: absolute;
+            width: 8rem;
+            height: 8rem;
+            margin: auto;
+            padding: 1.5em;
+            @include centered;
+
+            font-family: $fontStack;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            
+            background-color: white;
+            color: $colorBlue;
+            border: none;
+            border-radius: 25%;
+
+        }
+        .songs-button:hover {
+            background-color: $colorBlue;
+            color: white;
+        }
     }
-    .songs-button:hover {
-        background-color: $colorBlue;
-        color: white;
-    }
+
+    
 }
+
+
+
+
+
+
+
+
+
 
