@@ -22,54 +22,64 @@ body {
     background-blend-mode: soft-light;
 }
 
+
 .wrapper {
-    position: absolute;
-}
-.wrapper {
-    width: 100%;
-    height: 10rem;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 20rem auto;
+    display: flex;
+    flex-flow: row wrap;
+    height: 100vh;
+    justify-content: center;
+    
+    section {
+        flex: 1 100%;
+        // border: 10px solid tomato;
+    }
 
     .song-container {
+        display: flex;
+        flex-flow: column wrap;
+        min-height: 600px;
+        justify-content: flex-end;
+        
         color: black;
         text-align: center;
+
         a {
             color: white;
             text-decoration: none;
         }
+        
+        .title, .artist {
+            // flex: 1 100%;
+            // min-height: 
+        }
 
         .title {
+            // border: 6px solid goldenrod;
+            margin: 1rem 0;
+            padding: 4rem 2rem;
+            
             .title-text {
                 font-weight: 700;
                 font-style: italic;
-                font-size: 6em;
+                font-size: 6rem;
                 text-shadow: 0.3rem 0.3rem 2.6rem rgba(0,0,0, 0.7); 
             }
         }
         
         .artist {
-            width: 100%;
+            // border: 6px solid goldenrod;
             .artist-text {
-                font-size: 2rem;
+                font-size: 3rem;
             }
         }
     }
 
     .media-objects {
-        margin: 5rem 0;
-        width: 100%;
-        height: 6rem;
-        padding: 1rem;
-        // width: 30%;
-        // @include centered;
+        height: 8.5rem;
+        padding: 1rem 0;
 
         .media-objects-list {
             color: white;
-
             position: absolute;
             @include centered;
             
@@ -84,9 +94,6 @@ body {
                 padding: 0.9rem;
                 border-radius: 25%;
             }
-            .fa {
-                // font-size: 2.3rem;
-            }
 
             .media-object-item {
                 display: inline-block;
@@ -99,20 +106,17 @@ body {
     
     .refresh {
         
-        width: 100%;
         height: 10rem;
-        padding: 1rem;
 
         .songs-button {
             position: absolute;
+            @include centered;
             width: 8rem;
             height: 8rem;
-            margin: auto;
             padding: 1.5em;
-            @include centered;
 
             font-family: $fontStack;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 700;
             text-decoration: none;
             text-align: center;
@@ -120,7 +124,7 @@ body {
             background-color: white;
             color: $colorBlue;
             border: none;
-            border-radius: 25%;
+            border-radius: 50%;
 
         }
         .songs-button:hover {

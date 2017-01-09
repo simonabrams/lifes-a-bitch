@@ -13,36 +13,35 @@ body {
   background-blend-mode: soft-light; }
 
 .wrapper {
-  position: absolute; }
-
-.wrapper {
-  width: 100%;
-  height: 10rem;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 20rem auto; }
+  display: flex;
+  flex-flow: row wrap;
+  height: 100vh;
+  justify-content: center; }
+  .wrapper section {
+    flex: 1 100%; }
   .wrapper .song-container {
+    display: flex;
+    flex-flow: column wrap;
+    min-height: 600px;
+    justify-content: flex-end;
     color: black;
     text-align: center; }
     .wrapper .song-container a {
       color: white;
       text-decoration: none; }
-    .wrapper .song-container .title .title-text {
-      font-weight: 700;
-      font-style: italic;
-      font-size: 6em;
-      text-shadow: 0.3rem 0.3rem 2.6rem rgba(0, 0, 0, 0.7); }
-    .wrapper .song-container .artist {
-      width: 100%; }
-      .wrapper .song-container .artist .artist-text {
-        font-size: 2rem; }
+    .wrapper .song-container .title {
+      margin: 1rem 0;
+      padding: 4rem 2rem; }
+      .wrapper .song-container .title .title-text {
+        font-weight: 700;
+        font-style: italic;
+        font-size: 6rem;
+        text-shadow: 0.3rem 0.3rem 2.6rem rgba(0, 0, 0, 0.7); }
+    .wrapper .song-container .artist .artist-text {
+      font-size: 3rem; }
   .wrapper .media-objects {
-    margin: 5rem 0;
-    width: 100%;
-    height: 6rem;
-    padding: 1rem; }
+    height: 8.5rem;
+    padding: 1rem 0; }
     .wrapper .media-objects .media-objects-list {
       color: white;
       position: absolute;
@@ -62,26 +61,23 @@ body {
         list-style-type: none;
         padding-right: 5px; }
   .wrapper .refresh {
-    width: 100%;
-    height: 10rem;
-    padding: 1rem; }
+    height: 10rem; }
     .wrapper .refresh .songs-button {
       position: absolute;
-      width: 8rem;
-      height: 8rem;
-      margin: auto;
-      padding: 1.5em;
       left: 50%;
       transform: translateX(-50%);
+      width: 8rem;
+      height: 8rem;
+      padding: 1.5em;
       font-family: "Lobster Two", cursive;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 700;
       text-decoration: none;
       text-align: center;
       background-color: white;
       color: #003763;
       border: none;
-      border-radius: 25%; }
+      border-radius: 50%; }
     .wrapper .refresh .songs-button:hover {
       background-color: #003763;
       color: white; }

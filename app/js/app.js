@@ -31,6 +31,7 @@
         document.body.style.backgroundImage = "url(" + s.thumbnail + ")";
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
 
         // set song title
         var titleText = document.getElementsByClassName('title-text')[0];
