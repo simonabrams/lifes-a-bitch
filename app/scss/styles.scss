@@ -1,28 +1,147 @@
+/* vars */
+$colorBlue: rgba(0, 55, 99, 1);
+$fontStack: "Lobster Two", cursive;
+
+@mixin centered() {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 html {
   box-sizing: border-box;
+  font-family: $fontStack;
 }
 *, *:before, *:after {
   box-sizing: inherit;
+  padding: 0;
+  margin: 0;
 }
 
-.song-container {
-    position: relative;
-    display: block;
-    width: 80%;
-    max-width: 30rem;
-    height: 100%;
-    margin: auto;
-    color: black;
-    text-align: center;
+body {
+    background-color: $colorBlue;
+    background-blend-mode: soft-light;
 }
-.thumbnail {
-    width: 100%;
-    .thumbnail-img {
-        width: 100%;
-        height: 100%;
+
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    height: 100vh;
+    justify-content: center;
+    
+    section {
+        flex: 1 100%;
+        // border: 10px solid tomato;
     }
+
+    .song-container {
+        display: flex;
+        flex-flow: column wrap;
+        min-height: 600px;
+        justify-content: flex-end;
+        
+        color: black;
+        text-align: center;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .title, .artist {
+            // flex: 1 100%;
+            // min-height: 
+        }
+
+        .title {
+            // border: 6px solid goldenrod;
+            margin: 1rem 0;
+            padding: 4rem 2rem;
+            
+            .title-text {
+                font-weight: 700;
+                font-style: italic;
+                font-size: 6rem;
+                text-shadow: 0.3rem 0.3rem 2.6rem rgba(0,0,0, 0.7); 
+            }
+        }
+        
+        .artist {
+            // border: 6px solid goldenrod;
+            .artist-text {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .media-objects {
+        height: 8.5rem;
+        padding: 1rem 0;
+
+        .media-objects-list {
+            color: white;
+            position: absolute;
+            @include centered;
+            
+            padding: 0;
+            a {
+                color: white;
+            }
+            i {
+                width: 5rem;
+                height: 5rem;
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: 0.9rem;
+                border-radius: 25%;
+            }
+
+            .media-object-item {
+                display: inline-block;
+                list-style-type: none;
+                padding-right: 5px;
+            }
+
+        }
+    }
+    
+    .refresh {
+        
+        height: 10rem;
+
+        .songs-button {
+            position: absolute;
+            @include centered;
+            width: 8rem;
+            height: 8rem;
+            padding: 1.5em;
+
+            font-family: $fontStack;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            
+            background-color: white;
+            color: $colorBlue;
+            border: none;
+            border-radius: 50%;
+
+        }
+        .songs-button:hover {
+            background-color: $colorBlue;
+            color: white;
+        }
+    }
+
+    
 }
 
-.artist {
-    width: 100%;
-}
+
+
+
+
+
+
+
+
+
