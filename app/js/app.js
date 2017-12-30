@@ -14,6 +14,7 @@
         var rand = randRange(0, data.length);
         var song = data[rand];
 
+        console.log(song)
         //display the song title, artist, album and lyric
         var s = {
             title: sentenceCase(song.result.title),
@@ -23,7 +24,7 @@
             thumbnail: song.result.song_art_image_thumbnail_url,
             songInfo: "https://api.genius.com/songs/" + song.result.id + "?access_token=" + clientAccessToken
         }
-        // console.log(s);
+        console.log(s.songInfo);
 
         // build the display 
 
