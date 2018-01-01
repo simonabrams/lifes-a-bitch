@@ -1,10 +1,11 @@
 {
   "name": "lifes-a-bitch",
   "version": "1.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Discover the songs that use 'Life's a bitch' as a metaphor",
+  "main": "app.js",
   "scripts": {
-    "build": "webpack --progress --watch"
+    "start": "webpack-dev-server --inline",
+    "build": "webpack -p"
   },
   "author": "Simon Abrams",
   "license": "ISC",
@@ -13,11 +14,13 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "browser-sync-webpack-plugin": "^1.2.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.10.0"
-  },
-  "dependencies": {
-    "browser-sync": "^2.23.1"
+    "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.5",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }

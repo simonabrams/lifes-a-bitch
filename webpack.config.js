@@ -1,55 +1,49 @@
 const webpack = require('webpack');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
+const extractSass = new ExtractTextPlugin('css/styles.css');
 
 module.exports = {
+	context: path.resolve(__dirname, 'app'),
 	devtool: 'source-map',
 	entry: {
-		filename: './app/app.js',
+		filename: './js/app.js',
 	},
 	output: {
-		filename: '_dist/js/main.min.js',
+		path: path.resolve(__dirname, '_dist'),
+		filename: 'js/main.min.js',
 	},
 	module: {
-		loaders: [{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: 'babel-loader',
-			query: {
-				presets: ['env'],
-			},
-		}],
-		rules: [{
-			test: /\.scss$/,
-			use: [{
-				loader: 'style-loader'
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				query: {
+					presets: ['env'],
+				},
 			}, {
-				loader: 'css-loader'
-			}, {
-				loader: 'sass-loader'
+				test: /\.scss$/,
+				loader: extractSass.extract(['css-loader', 'sass-loader']),
 			}],
-		}],
 	},
 	plugins: [
 		// uglify js
-		new webpack.optimize.UglifyJsPlugin({
-			compress: { warnings: false },
-			output: { comments: false },
-			sourcemap: true,
+		new UglifyJsPlugin({
+			uglifyOptions: {
+				compress: { warnings: false },
+				output: { comments: false },
+				sourcemap: true,
+			},
 		}),
 
 		// env plugin
 		new webpack.DefinePlugin({
 			'process.env': { node_modules: JSON.stringify(nodeEnv) },
 		}),
-		// BrowserSync
-		new BrowserSyncPlugin({
-			// browse to http://localhost:3000/ during development,
-			// ./public directory is being served
-			host: 'localhost',
-			port: 3000,
-			server: { baseDir: ['_dist'] },
-		}),
+		extractSass,
 	],
 };
