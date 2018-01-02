@@ -122,7 +122,7 @@ function selectRandomSong(songs) {
 	const songDetails = {
 		title: sentenceCase(song.result.title),
 		artist: song.result.primary_artist.name,
-		path: `https://genius.com/${song.result.path}`,
+		path: `https://genius.com${song.result.path}`,
 		artist_path: song.result.primary_artist.url,
 		thumbnail: song.result.song_art_image_thumbnail_url,
 		songInfo: `https://api.genius.com/songs/${song.result.id}?access_token=${clientAccessToken}`,
@@ -137,6 +137,7 @@ function selectRandomSong(songs) {
 
 	const titleLink = document.querySelector('.title-link');
 	titleLink.href = songDetails.path;
+	console.log(songDetails.path);
 
 	// set artist
 	const artist = document.querySelector('.artist-text');
@@ -150,9 +151,12 @@ function selectRandomSong(songs) {
 
 // gets songs from the API
 function getSongs() {
-	// search for songs with the lyric 'life's a bitch"
-	const requestURI = `https://api.genius.com/search?q=lifes%20a%20bitch%20&per_page=50&access_token=${clientAccessToken}`;
-
+	// get a random page number
+	const page = (Math.floor(Math.random() * 50)) - 1;
+	console.log(page);
+	// search for songs with the lyric 'life's a bitch'"
+	const requestURI = `https://api.genius.com/search?q=lifes%20a%20bitch%20&per_page=50&page=${page}&access_token=${clientAccessToken}`;
+	console.log(requestURI);
 	request({ url: requestURI })
 		.then((data) => {
 			const songs = JSON.parse(data);
