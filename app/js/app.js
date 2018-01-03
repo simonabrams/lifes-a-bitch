@@ -2,6 +2,8 @@
 import { randRange, sentenceCase } from './utils';
 //  set client ID token
 import { clientID, clientAccessToken } from './config';
+// import GSAP
+import { TweenMax, TimelineMax } from 'gsap';
 // import css
 import '../scss/styles.scss';
 
@@ -28,12 +30,15 @@ const request = obj => (
 	})
 );
 
+// gets rid of previously added elements in the media items list
 function removeMediaElements(list) {
 	const els = Array.from(list.childNodes);
 
 	return els.map(item => item.parentNode.removeChild(item));
 }
 
+// add a button for each type of media that is associated with the song
+// eg. YouTube, Spotify, Soundcloud, etc.
 function createMediaElement(mediaDetails, list) {
 	const a = document.createElement('a');
 	a.href = mediaDetails.url;
@@ -85,7 +90,12 @@ function displaySongMedia(songReq) {
 	}
 
 	// insert a list item for each media object
-	media.map(item => createMediaElement(item, list));
+	const icons = media.map(item => createMediaElement(item, list));
+	const iconsAnim = TweenMax.staggerFrom(icons, 1, {
+		autoAlpha: 0,
+		scale: 1.1,
+		ease: Elastic.easeOut,
+	}, 0.2);
 }
 
 // get the song media
@@ -111,6 +121,27 @@ function setBackgroundImage(s) {
 	document.body.style.backgroundPosition = 'center';
 }
 
+// sets the title text and links for the song
+function setSongDetails(song) {
+	// title
+	const titleText = document.querySelector('.title-text');
+	titleText.innerHTML = song.title;
+
+	const titleLink = document.querySelector('.title-link');
+	titleLink.href = song.path;
+
+	// set artist
+	const artist = document.querySelector('.artist-text');
+	artist.innerHTML = song.artist;
+
+	const artistLink = document.querySelector('.artist-link');
+	artistLink.href = song.artist_path;
+
+	// animate the info in
+	const tl = new TimelineMax();
+	tl.staggerFrom([titleText, artist], 1, { autoAlpha: 0, scale: 1.1, ease:Strong.easeInOut }, 0.2);
+}
+
 function selectRandomSong(songs) {
 	const data = songs.response.hits;
 
@@ -128,22 +159,11 @@ function selectRandomSong(songs) {
 		songInfo: `https://api.genius.com/songs/${song.result.id}?access_token=${clientAccessToken}`,
 	};
 
-	// build the display
+	// sets the background iamge
 	setBackgroundImage(songDetails);
 
-	// set song title
-	const titleText = document.querySelector('.title-text');
-	titleText.innerHTML = songDetails.title;
-
-	const titleLink = document.querySelector('.title-link');
-	titleLink.href = songDetails.path;
-	console.log(songDetails.path);
-
-	// set artist
-	const artist = document.querySelector('.artist-text');
-	artist.innerHTML = songDetails.artist;
-	const artistLink = document.querySelector('.artist-link');
-	artistLink.href = songDetails.artist_path;
+	// set song title, artist and urls
+	setSongDetails(songDetails);
 
 	// get song media object - eg. youtube, apple music, spotify links
 	getSongMedia(songDetails);
